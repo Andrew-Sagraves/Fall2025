@@ -1,0 +1,110 @@
+########################
+Acknowledgement:
+
+I have read and agree to the terms of the COSC 494/594 Honor Code.
+########################
+Reverse Complement Generator:
+
+usage: ./reverse-complement lambda.fasta lambda.rev.fasta
+
+this program takes a genome sequence in via a command line argument and outputs the complement in another file
+########################
+Nucleotide and Dinucleotide Frequencies
+
+usage: ./freq lambda.fasta
+
+this program takes a genome sequence in via a command line argument and outputs the Nucleotide counts to stdout
+
+output:
+A: 0.254299
+T: 0.247124
+G: 0.264319
+C: 0.234258
+AA:0.0761206
+AT:0.0447404
+AG:0.0671313
+AC:0.0663065
+TA:0.0688013
+TT:0.0689662
+TG:0.0570698
+TC:0.0522865
+GA:0.0563276
+GT:0.0782236
+GG:0.0655643
+GC:0.0641829
+CA:0.0530494
+CT:0.0551936
+CG:0.074533
+CC:0.0514824
+
+########################
+Multinomial Model:
+
+usage: ./model-probability human-sample.fasta neanderthal-sample.fasta
+
+this trains and uses a multinomial model to estimate neucleotide probabilities
+
+probability: -452.664
+########################
+Markov Model:
+
+usage: ./markov-model human-sample.fasta neanderthal-sample.fasta
+
+this trains and uses a third-order markov model to estimate neucleotide probabilities
+
+probability: -448.368
+########################
+Markov Generation
+
+usage: ./markov-generation human-sample.fasta output-file.fasta
+
+this generates a sequence that is meant to look alike to the input file
+
+example: 
+
+~/COSC494/HW1> ./freq markov_simulated.fasta
+A: 0.30645
+T: 0.24875
+G: 0.13375
+C: 0.31105
+AA:0.09695
+AT:0.08385
+AG:0.03625
+AC:0.0894
+TA:0.0735
+TT:0.0626
+TG:0.02665
+TC:0.08595
+GA:0.0487
+GT:0.03095
+GG:0.027
+GC:0.0271
+CA:0.0873
+CT:0.0713
+CG:0.04385
+CC:0.1086
+~/COSC494/HW1> ./freq human_mito.fasta
+A: 0.309271
+T: 0.247103
+G: 0.130915
+C: 0.312711
+AA:0.0968131
+AT:0.0828706
+AG:0.036999
+AC:0.0925881
+TA:0.0742395
+TT:0.0605987
+TG:0.0252897
+TC:0.0869145
+GA:0.0479841
+GT:0.0309633
+GG:0.0256519
+GC:0.0262554
+CA:0.0902342
+CT:0.0726702
+CG:0.0429141
+CC:0.106893
+
+
+in sum, very similar
+########################
