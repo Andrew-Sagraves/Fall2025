@@ -2,15 +2,13 @@
 
 int main() {
   FILE *fl;
+  char buf[256];
+  int val = 255;
+  fl = fopen("filename.bin", "wb");
 
-  fl = fopen("filename.txt", "r");
+  size_t a = fwrite(&val, 1, sizeof(int), fl);
 
-  if (fl == NULL) {
-    perror("filename.txt");
-    return 1;
+  if (a != sizeof(int)) {
+    printf("error");
   }
-
-  fprintf(stderr, "hello World\n");
-
-  fclose(fl);
 }
