@@ -1,0 +1,106 @@
+###################
+REPORT FOR COSC494 (AKA DA BIO CLASS)
+
+confidential
+
+Andrew Sagraves
+
+###################
+
+Part 1:
+
+Dishonest casino implemented in casino_simulator.cpp
+
+to run, compile and then run ./casino. will output 300 dice rolls
+
+###################
+
+Part 2:
+
+Sequences were downloaded
+
+###################
+
+Part 3:
+
+Forward Algorithm
+
+compile and run like this:
+
+~/dev/COSC494/HW3 (main)> ./forward < casino.benchmark1.txt
+Log probability of sequence = -534.942829
+
+
+~/dev/COSC494/HW3 (main)> ./forward < casino.benchmark2.txt
+Log probability of sequence = -535.085341
+
+###################
+
+Part 4:
+
+Viterbi Algorithm implemented in viterbi.txt
+
+usage: ./viterbi < input.txt > output.txt
+
+results are in viterbi.1.txt and viterbi.2.txt
+
+##################
+
+Part 5: genomes were retrieved
+
+##################
+
+Part 6: GLIMMER gene prediction
+
+this was a bore. to do this, i had to take the two input genomes, run them through:
+
+long-orfs,
+extract,
+build-icm,
+glimmer3
+
+and finally we got an output file. those are attached as Ames_anscestor_out.detail and Ames_lab_out.detail 
+
+here are the basic outputs
+
+1. 
+Sequence file = Ames_lab.fasta
+Number of sequences = 1
+ICM model file = Ames_lab_out.icm
+Excluded regions file = none
+List of orfs file = none
+Input is NOT separate orfs
+Independent (non-coding) scores are used
+Circular genome = true
+Truncated orfs = false
+Minimum gene length = 100 bp
+Maximum overlap bases = 30
+Threshold score = 30
+Use first start codon = false
+Start codons = atg,gtg,ttg
+Start probs = 0.600,0.300,0.100
+Stop codons = taa,tag,tga
+GC percentage = 35.4%
+Ignore score on orfs longer than 503
+
+2.
+Sequence file = Ames_ancestor.fasta
+Number of sequences = 1
+ICM model file = Ames_ancestor_out.icm
+Excluded regions file = none
+List of orfs file = none
+Input is NOT separate orfs
+Independent (non-coding) scores are used
+Circular genome = true
+Truncated orfs = false
+Minimum gene length = 100 bp
+Maximum overlap bases = 30
+Threshold score = 30
+Use first start codon = false
+Start codons = atg,gtg,ttg
+Start probs = 0.600,0.300,0.100
+Stop codons = taa,tag,tga
+GC percentage = 35.4%
+Ignore score on orfs longer than 503
+
+###################
