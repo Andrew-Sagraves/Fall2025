@@ -61,40 +61,39 @@ void rb_clear(RingBuffer *rb) {
 }
 
 size_t rb_read(RingBuffer *rb, char *buf, size_t max_bytes) {
-    if (max_bytes >= rb->size) {
-        max_bytes = rb->size;
-    }
+  if (max_bytes >= rb->size) {
+    max_bytes = rb->size;
+  }
 
-    if (rb->at + max_bytes > rb->capacity) {
-        int rest = rb->at + max_bytes - rb->capacity;
-        int init = rb->capacity - rb->at;
+  if (rb->at + max_bytes > rb->capacity) {
+    int rest = rb->at + max_bytes - rb->capacity;
+    int init = rb->capacity - rb->at;
 
-        memcpy(buf, rb->buffer + rb->at, init * sizeof(char));
-        memcpy(buf + init, rb->buffer, rest * sizeof(char));
-        return max_bytes;
-    }
-
-    memcpy(buf, rb->buffer + rb->at, max_bytes * sizeof(char));
+    memcpy(buf, rb->buffer + rb->at, init * sizeof(char));
+    memcpy(buf + init, rb->buffer, rest * sizeof(char));
     return max_bytes;
+  }
+
+  memcpy(buf, rb->buffer + rb->at, max_bytes * sizeof(char));
+  return max_bytes;
 }
 size_t rb_write(struct RingBuffer *rb, const char *buf, size_t max_bytes) {
-    
-if (max_bytes + rb->size >= rb->capacity) {
-        max_bytes = rb->capacity - rb->size;
-    }
 
-    int start = rb->at + rb->size % rb->capacity;
+  if (max_bytes + rb->size >= rb->capacity) {
+    max_bytes = rb->capacity - rb->size;
+  }
 
-    if (start + max_bytes > rb->capacity) {
-        int rest = start + max_bytes - rb->capacity;
-        int init = rb->capacity - start;
+  int start = rb->at + rb->size % rb->capacity;
 
-        memcpy(rb->buffer + start, buf,  init * sizeof(char));
-        memcpy(rb->buffer, buf + init, rest * sizeof(char));
-        return max_bytes;
-    }
+  if (start + max_bytes > rb->capacity) {
+    int rest = start + max_bytes - rb->capacity;
+    int init = rb->capacity - start;
 
-    memcpy(rb->buffer + start, buf, max_bytes * sizeof(char));
+    memcpy(rb->buffer + start, buf, init * sizeof(char));
+    memcpy(rb->buffer, buf + init, rest * sizeof(char));
     return max_bytes;
-}
+  }
 
+  memcpy(rb->buffer + start, buf, max_bytes * sizeof(char));
+  return max_bytes;
+}
